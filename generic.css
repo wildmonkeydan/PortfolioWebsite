@@ -1,0 +1,233 @@
+.header
+{
+    background-color:rgb(0, 0, 0);
+}
+
+.banner
+{
+    object-fit: contain;
+    image-rendering: pixelated;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.icon
+{
+    object-fit: contain;
+    image-rendering: pixelated;
+    width: 32px;
+    height: 32px;
+}
+
+.navbar
+{
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.navbar button
+{
+    margin: 1.5em;
+    padding: 0;
+    text-align: center;
+    display: inline-block;
+}
+
+.game-block
+{
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: space-around;
+}
+
+.game-block p
+{
+    vertical-align: text-bottom;
+}
+
+.game-block-left
+{
+    grid-template-columns: 70% 30%;
+}
+
+.game-block-right
+{
+    grid-template-columns: 30% 70%;
+}
+
+.game-desc-block
+{
+    height: 100%;
+    display: grid;
+    vertical-align: top;
+    grid-template-rows: auto auto 15%;
+}
+
+.game-title-block
+{
+    display: inline-block;
+    width: 100%;
+}
+
+.game-platforms-block
+{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.game-platforms-block p
+{
+    display: inline-block;
+}
+
+.game-link-block
+{
+    display: grid;
+    grid-template-columns:  auto 25% 5% 25% auto;
+}
+
+.game-video-block
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: auto;
+}
+
+.game-images-block
+{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: auto;
+}
+
+.game-images-block img
+{
+    width: 100%;
+}
+
+.game-itch-embed
+{
+    width: -webkit-fill-available;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/* Icons */
+
+.windows-icon
+{
+    background-image: url("img/platforms/win.png");
+    background-size: contain;
+    image-rendering: pixelated;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+.ps1-icon
+{
+    background-image: url("img/platforms/ps1.png");
+    background-size: contain;
+    image-rendering: pixelated;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+/* Random stuff */
+
+.rainbow
+{
+    animation: rainbow 10s linear;
+    animation-iteration-count: infinite;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+@keyframes rainbow-bg{
+    100%,0%{
+        background-color: rgb(255,0,0);
+    }
+    8%{
+        background-color: rgb(255,127,0);
+    }
+    16%{
+        background-color: rgb(255,255,0);
+    }
+    25%{
+        background-color: rgb(127,255,0);
+    }
+    33%{
+        background-color: rgb(0,255,0);
+    }
+    41%{
+        background-color: rgb(0,255,127);
+    }
+    50%{
+        background-color: rgb(0,255,255);
+    }
+    58%{
+        background-color: rgb(0,127,255);
+    }
+    66%{
+        background-color: rgb(0,0,255);
+    }
+    75%{
+        background-color: rgb(127,0,255);
+    }
+    83%{
+        background-color: rgb(255,0,255);
+    }
+    91%{
+        background-color: rgb(255,0,127);
+    }
+}
+
+@keyframes rainbow{
+    100%,0%{
+        color: rgb(255,0,0);
+    }
+    8%{
+        color: rgb(255,127,0);
+    }
+    16%{
+        color: rgb(255,255,0);
+    }
+    25%{
+        color: rgb(127,255,0);
+    }
+    33%{
+        color: rgb(0,255,0);
+    }
+    41%{
+        color: rgb(0,255,127);
+    }
+    50%{
+        color: rgb(0,255,255);
+    }
+    58%{
+        color: rgb(0,127,255);
+    }
+    66%{
+        color: rgb(0,0,255);
+    }
+    75%{
+        color: rgb(127,0,255);
+    }
+    83%{
+        color: rgb(255,0,255);
+    }
+    91%{
+        color: rgb(255,0,127);
+    }
+}

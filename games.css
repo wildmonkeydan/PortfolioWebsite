@@ -1,0 +1,48 @@
+/* Resident EVO */
+
+.re-style
+{
+    background: #000000;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(25, 55, 115, 1) 50%, rgba(0, 0, 0, 1) 100%);
+
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.re-style h2
+{
+    color: white;
+    margin: 5px;
+}
+.re-style p
+{
+    color: white;
+    font-size: large;
+}
+
+
+/* Celeste PSX */
+
+.cel-style
+{
+    background: #ffb5f4;
+    background: radial-gradient(circle,rgba(255, 181, 244, 1) 0%, rgba(0, 0, 0, 1) 100%);
+
+    font-family: "Jersey 20", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.cel-style h2
+{
+    color: white;
+    margin: 5px;
+}
+.cel-style p
+{
+    color: white;
+    font-size: large;
+}
+.cel-style-images
+{
+    grid-template-columns: 25% 25% 25% 25%;
+}
