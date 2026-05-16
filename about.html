@@ -4,7 +4,7 @@
   <title>Midnight Mirage Softworks - About</title>
   <link rel="stylesheet" href="https://unpkg.com/xp.css">
   <link rel="stylesheet" href="generic.css">
-  <link rel="stylesheet" href="games.css">
+  <link rel="stylesheet" href="about.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Special+Elite&display=swap" rel="stylesheet">
@@ -50,8 +50,55 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
-          
+        <div class="window-body about-window">
+          <p>Hi,<br>I'm Daniel Turner, a 3rd year at Sheffield Hallam University currently studying Computer Sciene for Games. I've been programming games for 6 years</p>
+          <section class="tabs">
+            <menu role="tablist" aria-label="Sample Tabs">
+              <button class="tab_button" role="tab" aria-selected="true" aria-controls="tab-A">Skills</button>
+              <button class="tab_button" role="tab" aria-controls="tab-B">Experience</button>
+              <button class="tab_button" role="tab" aria-controls="tab-C">Hobbies / Other Stuff</button>
+            </menu>
+            <!-- the tab content -->
+            <div class="tab-panels">
+              <article role="tabpanel" id="tab-A">
+                <p>Languages:
+                  C
+                  C++
+                  Python
+                  Ruby
+                <p>
+                  Read more at <a href="games.html" target="_blank">MDN Web docs - ARIA: tab role</a>
+                </p>
+              </article>
+              <article role="tabpanel" hidden id="tab-B">
+                <h3>More...</h3>
+                <p>This tab contains a GroupBox</p>
+                <fieldset>
+                  <legend>Today's mood</legend>
+                  <div class="field-row">
+                    <input id="radio10" type="radio" name="fieldset-example2">
+                    <label for="radio10">Claire Saffitz</label>
+                  </div>
+                  <div class="field-row">
+                    <input id="radio11" type="radio" name="fieldset-example2">
+                    <label for="radio11">Brad Leone</label>
+                  </div>
+                  <div class="field-row">
+                    <input id="radio12" type="radio" name="fieldset-example2">
+                    <label for="radio12">Chris Morocco</label>
+                  </div>
+                  <div class="field-row">
+                    <input id="radio13" type="radio" name="fieldset-example2">
+                    <label for="radio13">Carla Lalli Music</label>
+                  </div>
+                </fieldset>
+              </article>
+              <article role="tabpanel" hidden id="tab-C">
+                <h3>Tab 3</h3>
+                <p>Lorem Ipsum Dolor Sit</p>
+              </article>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -62,6 +109,8 @@
       <p class="status-bar-field">CPU Usage: 14%</p>
     </div>
   </div>
+
+  <script src="src/tablist.js"></script>
 
 </body>
 </html>

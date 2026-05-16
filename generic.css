@@ -40,6 +40,11 @@
     display: inline-block;
 }
 
+.tab_button
+{
+    height: 3em;
+}
+
 .game-block
 {
     display: grid;
