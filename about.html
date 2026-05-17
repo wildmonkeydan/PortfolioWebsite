@@ -52,6 +52,9 @@
         </div>
         <div class="window-body about-window">
           <p>Hi,<br>I'm Daniel Turner, a 3rd year at Sheffield Hallam University currently studying Computer Sciene for Games. I've been programming games for 6 years</p>
+          <form style="margin-bottom: 1em;">
+            <button formtarget="_blank" formaction="CV.pdf">Click for my CV</button>
+          </form>
           <section class="tabs">
             <menu role="tablist" aria-label="Sample Tabs">
               <button class="tab_button" role="tab" aria-selected="true" aria-controls="tab-A">Skills</button>
@@ -60,15 +63,46 @@
             </menu>
             <!-- the tab content -->
             <div class="tab-panels">
-              <article role="tabpanel" id="tab-A">
-                <p>Languages:
-                  C
-                  C++
-                  Python
-                  Ruby
-                <p>
-                  Read more at <a href="games.html" target="_blank">MDN Web docs - ARIA: tab role</a>
-                </p>
+              <article role="tabpanel" id="tab-A" class="skills-tab">
+                <fieldset class="field-row-stacked">
+                  <legend>Languages:</legend>
+                  <div class="languages-grid">
+                    <div class="c-icon" title="C"></div>
+                    <div class="cpp-icon" title="C++"></div>
+                    <div class="csharp-icon" title="C#"></div>
+                    <div class="python-icon" title="Python"></div>
+                    <div class="ruby-icon" title="Ruby"></div>
+                    <div class="javascript-icon" title="Javascript"></div>
+                  </div>
+                </fieldset>
+                <fieldset class="tools-block">
+                  <legend>Platforms / Libraries / Engines:</legend>
+                  <p>
+                    Windows and Linux<br>
+                    Mac and iOS<br>
+                    Switch 1 & 2<br>
+                    PS1
+                  </p>
+                  <p>
+                    <a href="https://www.raylib.com" target="_blank">raylib</a><br>
+                    <a href="https://github.com/mikke89/RmlUi" target="_blank">RmlUi</a><br>
+                    <a href="https://www.sfml-dev.org" target="_blank">SFML</a><br>
+                    <a href="https://github.com/grumpycoders/pcsx-redux/tree/main/src/mips/psyqo" target="_blank">psyqo</a> /
+                    <a href="https://github.com/Lameguy64/PSn00bSDK/" target="_blank">PSn00bSDK</a><br>
+                    <a href="https://github.com/sverx/devkitSMS" target="_blank">devkitSMS</a>
+                  </p>
+                  <p>
+                    Unity, including editor tools<br>
+                    Unreal Engine, blueprints and C++<br>
+                  </p>
+                </fieldset>
+                <fieldset>
+                  <legend>Personal Skills:</legend>
+                  <p>
+                    Problem Solving<br>
+                    Teamwork & Collaboration
+                  </p>
+                </fieldset>
               </article>
               <article role="tabpanel" hidden id="tab-B">
                 <h3>More...</h3>

@@ -48,7 +48,6 @@
 .game-block
 {
     display: grid;
-    grid-template-rows: auto auto;
     align-content: space-around;
 }
 
@@ -148,6 +147,42 @@
     display: inline-block;
     width: 32px;
     height: 32px;
+}
+
+.c-icon
+{
+    background-image: url("img/languages/c.png");
+    background-size: cover;
+}
+
+.cpp-icon
+{
+    background-image: url("img/languages/cpp.png");
+    background-size: cover;
+}
+
+.csharp-icon
+{
+    background-image: url("img/languages/csharp.png");
+    background-size: cover;
+}
+
+.python-icon
+{
+    background-image: url("img/languages/python.png");
+    background-size: cover;
+}
+
+.ruby-icon
+{
+    background-image: url("img/languages/ruby.png");
+    background-size: cover;
+}
+
+.javascript-icon
+{
+    background-image: url("img/languages/javascript.png");
+    background-size: cover;
 }
 
 /* Random stuff */

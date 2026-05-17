@@ -7,3 +7,33 @@
 {
     font-size: medium;
 }
+
+.skills-tab > fieldset
+{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-width: 15em;
+    min-height: 12em;
+}
+
+.languages-grid
+{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 50% 50%;
+}
+
+.languages-grid div
+{
+    aspect-ratio: 1/1;
+    margin: 4px 4px 4px 4px;
+}
+
+.tools-block p
+{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1em;
+}
