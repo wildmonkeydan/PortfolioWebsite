@@ -3,7 +3,7 @@ const ev = new Event("build");
 
 const pages = {
     "blog": [
-        {
+        /*{
             "page": "blog/test.html",
             "thumbnail": "img/games/bugyard/bug0.png",
             "title": "Test guhguh"
@@ -17,16 +17,21 @@ const pages = {
             "page": "blog/test.html",
             "thumbnail": "img/games/bugyard/bug0.png",
             "title": "Test guhguh"
-        }
+        }*/
     ],
     "games": [
-        "test1"
     ]
 };
 
 folderList.addEventListener("build", (e) => {
     let parent = document.createElement("div");
     parent.setAttribute("class", "list-trio");
+
+    if (pages[folderList.ariaLabel].length == 0)
+    {
+        parent.innerText = "Nothing to see here...";
+    }
+
     for (let i = 0; i < pages[folderList.ariaLabel].length; i++)
     {
         if (i % 3 == 0)
