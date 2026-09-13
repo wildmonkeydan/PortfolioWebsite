@@ -45,6 +45,32 @@
     height: 3em;
 }
 
+.list-block
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-block h4
+{
+    font-size: medium;
+    position: relative;
+    top: -100%;
+    text-align: center;
+}
+
+.list-block img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.list-trio
+{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
 .game-block
 {
     display: grid;
@@ -104,6 +130,8 @@
     margin-right: auto;
     margin-top: 30px;
     margin-bottom: auto;
+    min-height: 18em;
+    min-width: 32em;
 }
 
 .game-images-block
@@ -118,6 +146,7 @@
 .game-images-block img
 {
     width: 100%;
+    align-self: center;
 }
 
 .game-itch-embed
@@ -142,6 +171,16 @@
 .ps1-icon
 {
     background-image: url("img/platforms/ps1.png");
+    background-size: contain;
+    image-rendering: pixelated;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+.web-icon
+{
+    background-image: url("img/platforms/web.png");
     background-size: contain;
     image-rendering: pixelated;
     display: inline-block;
