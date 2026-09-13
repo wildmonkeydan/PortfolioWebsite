@@ -46,3 +46,30 @@
 {
     grid-template-columns: 25% 25% 25% 25%;
 }
+
+
+/* Bugyard */
+
+.bug-style
+{
+    background: #6dd19a;
+    background: radial-gradient(circle,rgb(151, 206, 130) 0%, rgb(0, 0, 0) 100%);
+
+    font-family: "Jersey 20", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.bug-style h2
+{
+    color: white;
+    margin: 5px;
+}
+.bug-style p
+{
+    color: white;
+    font-size: large;
+}
+.bug-style-images
+{
+    grid-template-columns: 25% 25% 25% 25%;
+}

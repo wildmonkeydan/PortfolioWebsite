@@ -37,3 +37,28 @@
     vertical-align: top;
     margin-right: 1em;
 }
+
+.job-block h4
+{
+    margin-bottom: 0em;
+    margin-top: 0em;
+}
+
+.job-block h5
+{
+    margin-top: 0em;
+    margin-bottom: 0em;
+    color: grey;
+    font-size: medium;
+}
+
+.job-title
+{
+    display: inline-block;
+}
+
+.job-title img
+{
+    height: 4em;
+    margin-left: 2em;
+}
