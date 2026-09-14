@@ -5,7 +5,7 @@ const pages = {
     "blog": [
         {
             "page": "blog/alientrilogypt1.html",
-            "thumbnail": "img/games/bugyard/bugtitle.png",
+            "thumbnail": "img/blog/alien-trilogy/screenshot0.png",
             "title": "Alien Trilogy Mouselook - Part 1"
         }
         /*{

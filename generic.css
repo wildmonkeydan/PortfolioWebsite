@@ -49,20 +49,32 @@
 {
     margin-left: auto;
     margin-right: auto;
+    text-decoration: none;
 }
 
 .list-block h4
 {
     font-size: medium;
     position: relative;
-    top: -100%;
+    top: -50%;
     text-align: center;
+    color: rgba(0,0,0,0);
+    text-decoration: none;
+}
+
+.list-block:hover h4
+{
+    color: aliceblue;
 }
 
 .list-block img
 {
     width: 100%;
-    height: 100%;
+}
+
+.list-block:hover img
+{
+    filter: blur(4px);
 }
 
 .list-trio
