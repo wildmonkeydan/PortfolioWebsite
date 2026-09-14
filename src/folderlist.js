@@ -3,6 +3,11 @@ const ev = new Event("build");
 
 const pages = {
     "blog": [
+        {
+            "page": "blog/alientrilogypt1.html",
+            "thumbnail": "img/games/bugyard/bugtitle.png",
+            "title": "Alien Trilogy Mouselook - Part 1"
+        }
         /*{
             "page": "blog/test.html",
             "thumbnail": "img/games/bugyard/bug0.png",

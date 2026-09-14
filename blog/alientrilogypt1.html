@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Midnight Mirage Softworks - Games</title>
+  <link rel="stylesheet" href="https://unpkg.com/xp.css">
+  <link rel="stylesheet" href="../generic.css">
+  <link rel="stylesheet" href="../games.css">
+  <link rel="stylesheet" href="../blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body style="background-color:rgb(0, 0, 0);">
+
+  <div class="window" style="background-color:rgb(0, 0, 0);">
+    <div class="title-bar">
+      <div class="title-bar-text">Midnight Mirage Softworks - Blog</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Restore"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="header">
+        <img src="../img/blog/alien-trilogy/banner.png" alt="Banner" class="banner">
+        <form class="navbar">
+          <button formaction="../index.html">
+            <img src="../img/homeico.png" class="icon"></img>
+            <p>Home</p>
+          </button>
+          <button formaction="../about.html">
+            <img src="../img/aboutico.png" class="icon"></img>
+            <p>About</p>
+          </button> 
+          <button formaction="../games.html">
+            <img src="../img/gamesico.png" class="icon"></img>
+            <p>Games</p>
+          </button>
+          <button formaction="../blog.html">
+            <img src="../img/blogico.png" class="icon"></img>
+            <p>Blog</p>
+          </button>
+        </form>
+      </div>
+      <div class="window">
+        <div class="title-bar">
+          <div class="title-bar-text">Games</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body blog-page">
+            <h3>Alien Trilogy Mouselook</h3>
+            <h4>Part 1 - Finding The Turning Point</h4>
+            <p>
+            Welcome to a little blog about trying to add mouse controls to the PS1 FPS, Alien Trilogy. I started this when I found out the DOS port of the game doesn't have mouselook like I'd thought, and seeing as the PS1 port is the best version of the game, I thought I'd give adding mouse support a go.
+            </p>
+            <h4>How?</h4>
+            <p>
+            My plan is to try and find the function for turning the player, so that I can increase the turning speed. This is because when using an emulator to bind turning to the mouse, the sensitivity is far too low. To do this, I need to disassemble the executable using Ghidra, which is a SRE (Software Reverse Engineering) tool made by the NSA (National Security Agency), primarily for reverse engineering malware. Thankfully, lab313ru on GitHub has made a plugin which can analyze PS1 machine code and detect SDK functions https://github.com/lab313ru/ghidra_psx_ldr
+            <br><br>I then used dumpsxiso, a tool for extracting the files from a PS1 disc image, and loaded the main executable, SLUS_000.07, into Ghidra.
+            </p>
+            <center><img src="../img/blog/alien-trilogy/ghidramain.png"/></center>
+            <p>
+            So where do we go from here? Well thankfully, I can look through the symbol tree to see if it found any SDK functions for getting input, and though I couldn't find the actual functions, I found some of the functions these use in the background, Pad_init2 and Pad_dr. Pad_init2 should tell the bios to poll the controller driver at 60hz, and Pad_dr, which we're more interested in, grabs the controller input into a buffer the game can get.
+            <br><br>After tracing how Pad_dr was used, I found 3 variables which track controller input for the game, which are all pretty standard (one for current state, one for prevoius frame's state and one for the buttons pressed that frame). I now need to find where these were being used...
+            </p>
+            <h4>Bitmasks Galore</h4>
+            <p>
+            The controller input buffer is two bytes, with each button being one bit of this, so to search for what we want, in this case left and right on the D-Pad I can search for any instances of & 0x20 or & 0x80 respectively. However, ghidra likes to make most values show as hexadecimal, so searching for these came back with a lot of results. I tried combing through these but wasn't really able to find anything.
+            </p>
+            <center><img src="../img/blog/alien-trilogy/ghidrasearch.png" style="max-height: 45em;"/></center>
+            <p>
+            Half way through looking however, I remembered the game actually lets you choose a control scheme, so finding them by constants won't be the way to go. I'll need to find where it sets the keybinds and hopefully go from there. To do that though, I thought the easiest way would be to find the functions handling the control scheme menu. Easy is not a word I would now use to describe finding the menus.
+            </p>
+            
+            <h4>Callback Hell</h4>
+            <p>
+            From the little decompiling I have done, menus have generally been the least of my worries, as they are, by and large, simple and not very obscured. However, this game seems to use some sort of system where it uses structs with callbacks to determine the logic for each menu, which sounds smart and cool on the dev side, but when trying to figure it out in decompiled code with compiler optimizations, it's a whole different story. Ghidra can't really find structs that aren't already in the SDK (and even then it struggles), so you'll usually get lots of random pointer offsets with weird incomprehensible casting, such as these:
+            </p>
+            <center><img src="../img/blog/alien-trilogy/callbacks.png" style="max-height: 30em;"/></center>
+
+            <p>
+            It also can't find most callbacks, as I believe it finds new functions to decompile by starting in main and finding all the jumps and branches it can, so if the callback is only referenced as a variable it'll never be discovered. This means we'll have to go into an emulator with a debugger and trace where it jumps to. Thankfully DuckStation, the recommended emulator for the PS1 at the moment, has a nice suite of tools for this. I can put the address where it calls these callbacks as a breakpoint in the CPU debugger and step into what's happening.
+
+            <br><br>Using this I found 3 callbacks it uses:
+
+            <br><br>One which grabs and renders the current menu's title
+
+            <br><br>One which seemingly does the actual menu logic, but it's hard to tell as it is mostly math between unknown variables
+
+            <br><br>One which draws the exit button
+
+            <br><br>These were interesting to find, but weren't going to get me anywhere unless I spent a lot of time figuring out the logic. As a way to try to pinpoint which part was specifically setting the bindings, I tried to search for the different strings related to them (Run, Fire 1 etc.)
+            </p>
+            <div style="max-height: 45em; display: grid; grid-template-columns: 50% 50%; margin-left: 5%; margin-right: 5%;">
+                <img src="../img/blog/alien-trilogy/controlmethod.png" style="max-height: 45em;" />
+                <div>
+                    <p>I couldn't find any references to these strings in the binary, which puzzled me for a while, until I looked at the VRAM and lo and behold, each control method is an individual texture :|</p>
+                    <img src="../img/blog/alien-trilogy/controlvram.png" style="max-height: 45em;" />
+                </div>
+            </div>
+            <p>
+            However, from spending time on this menu I realised the bindings on the D-Pad are constant, so the only way forward would be to scour through the references to the controller input and check for any AND's with global variables in order to discover the actual control bindings which will, fingers crossed, point me in the direction of code handling the player movement.
+
+            <br><br>Thankfully, I didn't have to search long to find a function with a lot of these and trace where these global variables get written lead me to a nicely laid out function for setting the control method! However, on finding this I noticed the values set weren't really matching the buttons I'd seen on the menu, until I realized something that'd been causing a lot of my confusion over code using input I'd seen before. For whatever reason, they change the endianess of the input buffer? No idea why, but with this new knowledge I was able to find some promising looking functions near checking for strafe inputs.
+            </p>
+
+            <h4>The Turning Point</h4>
+            <center><img src="../img/blog/alien-trilogy/turnfunc.png" style="max-height: 45em;"/></center>
+            <p>
+            The turning function is pretty simple, TurnValue will accumlate over time when a direction is pressed, which adds some nice turn smoothing. I will eventually hit the turning speed limit, TurnCap, and then rotate at that interval every frame (30 fps). There is also a very similar function for turning the other direction, the only difference being a minus in Line 11
+
+            <br><br>This is also thankfully very easy to modify, as all of these values are hard-coded at some point and we can just patch the instruction to change the value.
+
+            <br><br>With all this we can now mess around with values and see what feels good. Setting the TurnCap to around 0xA0 and the 4 in either function to 0x40 seems to work nicely, as this basically ignores the smoothing and gives good sensitivity. However, there's some pretty glaring issues stopping this from being actually playable. 
+
+            <br><br>Because binding the mouse in an emulator will just press the D-Pad, all the nuance of mouse movement gets ignored, which means small adjustments feel way too sensitive and big ones you'd expect to let the player do a 180 aren't sensitive enough. The solution is to patch in my own mouse support (the PS1 does have a mouse peripheral, and quite a few FPS's actually support it), but for now, here are the addresses for you to mess around with if you wish :)
+
+            <br><br>0x80039AE0 - Right Turn Speed  - Recommended 0x40
+
+            <br>0x80039A68 - Left Turn Speed  - Recommended 0x40
+
+            <br>0x8003be94 - TurnCap strafe  - Recommended 0xA0  (Quick Note: you actually tun faster in the normal controls when strafing for some reason...)
+
+            <br>0x8003bed8 - TurnCap straight  - Recommended 0xA0
+            </p>
+            <center><img src="../img/blog/alien-trilogy/screenshot0.png"/></center>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-bar" style="background-color:rgb(255, 255, 255);">
+      <p class="status-bar-field">© Daniel Turner 2026</p>
+      <p class="status-bar-field">Made using xp.css</p>
+      <p class="status-bar-field">CPU Usage: 14%</p>
+    </div>
+  </div>
+
+</body>
+</html>

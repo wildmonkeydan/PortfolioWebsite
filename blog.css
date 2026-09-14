@@ -1,0 +1,24 @@
+.blog-page h4
+{
+    text-align: center;
+    font-size: large;
+}
+
+.blog-page h3
+{
+    text-align: center;
+}
+
+.blog-page p
+{
+    font-size: medium;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.blog-page img
+{
+    margin: auto;
+    width: 100%;
+    max-width: fit-content;
+}
