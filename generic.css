@@ -114,6 +114,11 @@
     grid-template-rows: auto auto 15%;
 }
 
+.game-desc-block p 
+{
+    text-align: center;
+}
+
 .game-title-block
 {
     display: inline-block;
@@ -140,7 +145,7 @@
 .game-link-block
 {
     display: grid;
-    grid-template-columns:  auto 25% 5% 25% auto;
+    grid-template-columns:  auto 20% 3% 20% 3% 20% auto;
     margin-top: 64px;
 }
 
@@ -245,6 +250,17 @@
     display: inline-block;
     width: 42px;
     height: 48px;
+    vertical-align: middle;
+}
+
+.psn00b-icon
+{
+    background-image: url("img/platforms/psn00bsdk.png");
+    background-size: contain;
+    display: inline-block;
+    image-rendering: pixelated;
+    width: 128px;
+    height: 42px;
     vertical-align: middle;
 }
 
