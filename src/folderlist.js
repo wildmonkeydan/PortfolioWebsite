@@ -25,6 +25,11 @@ const pages = {
         }*/
     ],
     "games": [
+        {
+            "page": "games/bugyard.html",
+            "thumbnail": "img/games/bugyard/bugtitle.png",
+            "title": "Bugyard"
+        }
     ]
 };
 

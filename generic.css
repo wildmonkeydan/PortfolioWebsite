@@ -70,6 +70,7 @@
 .list-block img
 {
     width: 100%;
+    filter: drop-shadow(8px 8px 4px #000);
 }
 
 .list-block:hover img
@@ -87,11 +88,12 @@
 {
     display: grid;
     align-content: space-around;
+    position: relative;
 }
 
 .game-block p
 {
-    vertical-align: text-bottom;
+    vertical-align: middle;
 }
 
 .game-block-left
@@ -129,10 +131,23 @@
     display: inline-block;
 }
 
+.game-platforms-block div
+{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
 .game-link-block
 {
     display: grid;
     grid-template-columns:  auto 25% 5% 25% auto;
+    margin-top: 64px;
+}
+
+.game-link-block button
+{
+    min-height: 64px;
+    font-size: small;
 }
 
 .game-video-block
@@ -140,10 +155,11 @@
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 1em;
     margin-bottom: auto;
     min-height: 18em;
     min-width: 32em;
+    filter: drop-shadow(0px 8px 4px);
 }
 
 .game-images-block
@@ -151,7 +167,7 @@
     display: grid;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 1em;
     margin-bottom: auto;
 }
 
@@ -159,6 +175,7 @@
 {
     width: 100%;
     align-self: center;
+    filter: drop-shadow(0px 8px 4px);
 }
 
 .game-itch-embed
@@ -166,6 +183,16 @@
     width: -webkit-fill-available;
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.game-fun-fact
+{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    text-align: right;
+    margin: auto;
+    width: 25%;
 }
 
 /* Icons */
@@ -176,28 +203,59 @@
     background-size: contain;
     image-rendering: pixelated;
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
 }
 
 .ps1-icon
 {
     background-image: url("img/platforms/ps1.png");
     background-size: contain;
-    image-rendering: pixelated;
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
 }
 
 .web-icon
 {
     background-image: url("img/platforms/web.png");
     background-size: contain;
-    image-rendering: pixelated;
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+}
+
+.godot-icon
+{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original");
+    background-size: contain;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+}
+
+.unity-icon
+{
+    background-image: url("img/platforms/unity.svg");
+    background-size: contain;
+    display: inline-block;
+    width: 42px;
+    height: 48px;
+    vertical-align: middle;
+}
+
+.firebase-icon
+{
+    background-image: url("img/platforms/firebase.png");
+    background-size: contain;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
 }
 
 .c-icon
